@@ -55,7 +55,7 @@ const Login: NextPage = () => {
         <div className="font-extrabold text-center">Login</div>
         <div className="text-xs">Email Address</div>
 
-        <form className="rad" onSubmit={onSubmitForm}>
+        <div>
           <input
             className="w-full h-15 border mt-1 rounded-md p-1"
             placeholder="Email Address"
@@ -76,10 +76,15 @@ const Login: NextPage = () => {
             required
           />
 
-          <button className="w-full h-15 border mt-2 p-2 bg-teal-200 hover:bg-teal-300 rounded-lg duration-500 transition-colors">
-            Login
-          </button>
-        </form>
+          <div className="w-full flex flex-row gap-2">
+            <button className="w-full h-15 border mt-2 p-2 bg-teal-200 hover:bg-teal-300 rounded-lg duration-500 transition-colors" onClick={onSubmitForm}>
+              Login
+            </button>
+            <button className="w-full h-15 border mt-2 p-2 bg-teal-200 hover:bg-teal-300 rounded-lg duration-500 transition-colors" onClick={() => router.push("/signup")}>
+              Sign Up
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   )

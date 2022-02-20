@@ -9,25 +9,25 @@ import { GoThreeBars } from "react-icons/go"
 const links = [
     {
         name: "Dashboard",
-        link: "/dashboard",
+        link: "/coming-soon",
         id: "dashboard",
         priority: false
     },
     {
         name: "Full Map",
-        link: "/full-map",
+        link: "/coming-soon",
         id: "full-map",
         priority: false
     },
     {
         name: "Rebate Points",
-        link: "/rebate-points",
+        link: "/coming-soon",
         id: "rebate-points",
         priority: false
     },
     {
         name: "Settings",
-        link: "/settings",
+        link: "/coming-soon",
         id: "settings",
         priority: false
     },

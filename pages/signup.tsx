@@ -36,7 +36,7 @@ const Login: NextPage = () => {
       )
       return
     }
-    
+
     // Go to car config page
     router.push('/car-config')
   }
@@ -47,7 +47,7 @@ const Login: NextPage = () => {
         <div className="font-extrabold text-center">Sign Up</div>
         <div className="text-xs">Email Address</div>
 
-        <form className="" onSubmit={onSubmitForm}>
+        <div>
           <input
             className="w-full h-15 border mt-1 rounded-md p-1"
             placeholder="Email Address"
@@ -66,13 +66,21 @@ const Login: NextPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button
-            className="w-full h-15 border mt-2 p-2 bg-purple-100 hover:bg-purple-300 rounded-lg duration-500 transition-colors"
-            onClick={onSubmitForm}
-          >
-            Login
-          </button>
-        </form>
+          <div className="w-full flex flex-row gap-2">
+            <button
+              className="w-full h-15 border mt-2 p-2 bg-purple-100 hover:bg-purple-300 rounded-lg duration-500 transition-colors"
+              onClick={onSubmitForm}
+            >
+              Sign Up
+            </button>
+            <button
+              className="w-full h-15 border mt-2 p-2 bg-purple-100 hover:bg-purple-300 rounded-lg duration-500 transition-colors"
+              onClick={() => router.push('/login')}
+            >
+              Log In
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   )
