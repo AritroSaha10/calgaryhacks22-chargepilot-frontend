@@ -3,9 +3,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
-import auth from "../db/auth"
+import auth from '../db/auth'
 import { setDoc, doc } from 'firebase/firestore'
-import db from "../db"
+import db from '../db'
 
 function isEmail(email: string) {
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -18,14 +18,14 @@ const CarConfig: NextPage = () => {
   const [maxChargeSpeed, setMaxChargeSpeed] = useState(0)
   const [maxRadius, setMaxRadius] = useState(0)
   const [carName, setCarName] = useState('')
-  const [portType, setPortType] = useState('')
+  const [portType, setPortType] = useState('other')
 
   const [name, setName] = useState('')
 
   const router = useRouter()
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       if (auth().currentUser == null) {
         alert('Please log in! (curr user null)')
 
@@ -43,19 +43,18 @@ const CarConfig: NextPage = () => {
       // router.push("/login")
     }
 
-    await setDoc(doc(db(), "users", auth().currentUser.uid), {
+    await setDoc(doc(db(), 'users', auth().currentUser.uid), {
       name,
       showRebates: true,
       car: {
         batterySize,
         maxChargeSpeed,
         maxRadius,
-        "name": carName,
-        portType
-      }
-    });
+        name: carName,
+        portType,
+      },
+    })
 
-    
     router.push('/')
   }
 
@@ -104,13 +103,15 @@ const CarConfig: NextPage = () => {
 
             <div>
               <div className="text-xs">Port Type</div>
-              <input
-                className="w-full h-15 border mt-1 rounded-md p-1"
-                placeholder="Port type..."
-                value={portType}
-                onChange={(e) => setPortType(e.target.value)}
-                required
-              />
+              
+              <select className='w-full h-15 border mt-1 rounded-md p-1' required onChange={(e) => setPortType(e.target.value)} value={portType}>
+                <option value="J1772">J1772</option>
+                <option value="CCS1">CCS1</option>
+                <option value="CHAdeMO">CHAdeMO</option>
+                <option value="CCS2">CCS2</option>
+                <option selected value="other">Port type...</option>
+              </select>
+
             </div>
 
             <div>

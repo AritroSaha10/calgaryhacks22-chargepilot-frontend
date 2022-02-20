@@ -37,11 +37,14 @@ const Home = () => {
   useEffect(() => {
     ;(async () => {
       auth().onAuthStateChanged(async (user) => {
+        console.log(router.pathname)
+        
         if (user) {
           const userID = auth().currentUser?.uid
           const userDoc = await getDoc(doc(getFirestore(), 'users', userID))
+          console.log(router.pathname)
 
-          if (!userDoc.exists()) {
+          if (!userDoc.exists() && router.pathname === "/") {
             alert('Please log in!')
             router.push('/login')
             return
